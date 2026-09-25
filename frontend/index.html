@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Resume Analyser</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brand">AI Resume Analyser</div><div class="sub">Resume insights • ATS score • Job matching</div></header>
+<main>
+<section class="card">
+<h2>1. Analyse your resume</h2>
+<input id="resume" type="file" accept=".pdf,.docx,.txt">
+<button onclick="analyse()">Analyse Resume</button>
+<div id="status"></div>
+<div id="result"></div>
+</section>
+<section class="card">
+<h2>2. Match with a job description</h2>
+<textarea id="jd" placeholder="Paste the job description here..."></textarea>
+<button onclick="matchJD()">Check Job Match</button>
+<div id="match"></div>
+</section>
+</main>
+<script src="app.js"></script>
+</body></html>
