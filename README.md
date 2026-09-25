@@ -18,6 +18,7 @@ Designed for Python 3.14. The project uses only lightweight packages listed in `
 3. Open the folder in VS Code.
 4. Double-click `START.bat`.
 5. The browser opens automatically at http://127.0.0.1:5000
+6. Live Link "https://ai-resume-analyser-6-7nlj.onrender.com/"
 
 You do NOT need to manually run pip install or start the Flask server.
 
