@@ -1,3 +1,4 @@
+const API_BASE = "https://ai-resume-analyser-6-7nlj.onrender.com";
 const $=id=>document.getElementById(id);
 let lastFile=null;
 function showError(el,msg){$(el).innerHTML=`<p class="error">${msg}</p>`}
@@ -6,7 +7,7 @@ async function analyse(){
  lastFile=file; $("status").textContent="Analysing...";
  const fd=new FormData(); fd.append("resume",file);
  try{
-  const r=await fetch("/api/analyse",{method:"POST",body:fd}); const d=await r.json();
+  const r=await fetch('${API_BASE}/api/analyse',{method:"POST",body:fd}); const d=await r.json();
   if(!r.ok) throw Error(d.error);
   $("status").textContent="Analysis complete.";
   $("result").innerHTML=`<div class="grid">
@@ -25,7 +26,7 @@ async function matchJD(){
  const fd=new FormData();fd.append("resume",file);fd.append("job_description",jd);
  $("match").textContent="Checking...";
  try{
-  const r=await fetch("/api/match",{method:"POST",body:fd});const d=await r.json();if(!r.ok)throw Error(d.error);
+  const r=await fetch('${API_BASE}/api/match',{method:"POST",body:fd});const d=await r.json();if(!r.ok)throw Error(d.error);
   $("match").innerHTML=`<div class="grid"><div class="stat"><div class="muted">Job match</div><div class="score">${d.match_percentage}%</div></div><div class="stat"><div class="muted">Job skills</div><div class="score">${d.job_skills.length}</div></div></div>
   <h3>Matched skills</h3><div class="tags">${d.matched.map(s=>`<span class="tag">${s}</span>`).join("")||"None"}</div>
   <h3>Missing / not detected</h3><div class="tags">${d.missing.map(s=>`<span class="tag">${s}</span>`).join("")||"None"}</div>`;
